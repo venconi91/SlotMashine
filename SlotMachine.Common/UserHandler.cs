@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace SlotMashine
+﻿namespace SlotMachine.Common
 {
+  using System.Collections.Generic;
+
   public class UserHandler : IUserHandler
   {
     private IPlayer currentPlayer;

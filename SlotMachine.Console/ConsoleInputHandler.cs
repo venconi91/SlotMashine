@@ -1,5 +1,6 @@
-﻿namespace SlotMashine
+﻿namespace SlotMachine.Console
 {
+  using SlotMachine.Common;
   using System;
 
   public class ConsoleInputHandler : IInputHandler

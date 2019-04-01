@@ -1,4 +1,4 @@
-﻿namespace SlotMashine
+﻿namespace SlotMachine.Common
 {
   using System;
   using System.Collections.Generic;

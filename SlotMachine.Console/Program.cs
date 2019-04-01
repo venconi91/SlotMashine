@@ -1,7 +1,8 @@
-﻿namespace SlotMashine
+﻿namespace SlotMachine.Console
 {
   using Microsoft.Extensions.Configuration;
   using Microsoft.Extensions.DependencyInjection;
+  using SlotMachine.Common;
   using System.IO;
 
   class Program
@@ -24,6 +25,8 @@
           .AddJsonFile("appsettings.json", optional: true);
 
       Configuration = builder.Build();
+
+
 
       services.AddTransient<IGame, SlotGame>();
       services.AddSingleton<IPlayer, Player>();

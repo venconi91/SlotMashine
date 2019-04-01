@@ -1,4 +1,4 @@
-﻿namespace SlotMashine
+﻿namespace SlotMachine.Common
 {
   public class BananaSymbol : Symbol
   {
