@@ -25,8 +25,8 @@
           .AddJsonFile("appsettings.json", optional: true);
 
       Configuration = builder.Build();
-
-
+      
+      services.Configure<SlotMachineSettings>(Configuration.GetSection("SlotMachineSettings"));
 
       services.AddTransient<IGame, SlotGame>();
       services.AddSingleton<IPlayer, Player>();

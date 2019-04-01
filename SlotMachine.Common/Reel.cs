@@ -1,5 +1,6 @@
 ﻿namespace SlotMachine.Common
 {
+  using Microsoft.Extensions.Options;
   using System.Collections.Generic;
 
   public class Reel : IReel
@@ -8,24 +9,26 @@
     private readonly int cols;
     private IEnumerable<Symbol> availableSymbols;
     private ISymbolGenerator symbolGenerator;
+    private SymbolFactory symbolFactory = new SymbolFactory();
 
-    public Reel(ISymbolGenerator symbolGenerator)
+    public Reel(ISymbolGenerator symbolGenerator, IOptions<SlotMachineSettings> settings)
     {
-      this.rows = 4;
-      this.cols = 3;
       this.symbolGenerator = symbolGenerator;
-      InitializeAvailableSymbols();
+      rows = settings.Value.Rows;
+      cols = settings.Value.Cols;
+      InitializeAvailableSymbols(settings.Value.SlotMachineSymbolsSettings);
     }
 
     public List<List<Symbol>> CurrentSymbols { get; set; }
 
-    private void InitializeAvailableSymbols()
+    private void InitializeAvailableSymbols(IList<SlotMachineSymbolsSettings> symbolSettings)
     {
-      Symbol appleSymbol = new AppleSymbol("Apple", "A", 0.4m, 45);
-      Symbol bananaSymbol = new BananaSymbol("Banana", "B", 0.6m, 35);
-      Symbol pineappleSymbol = new PineppleSymbol("Pineapple", "P", 0.8m, 15);
-      Symbol wildcardSymbol = new WildcardSymbol("Wildcard", "*", 0, 5);
-      this.availableSymbols = new List<Symbol>() { appleSymbol, bananaSymbol, pineappleSymbol, wildcardSymbol };
+      var availableSymbols = new List<Symbol>();
+      foreach (var symbolSetting in symbolSettings)
+      {
+        availableSymbols.Add(symbolFactory.GenerateSymbol(symbolSetting));
+      }
+      this.availableSymbols = availableSymbols;
     }
 
     public IEnumerable<IEnumerable<Symbol>> Spin()
