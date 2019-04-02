@@ -35,14 +35,20 @@ namespace Tests
       services.AddTransient<ISlotMachine, SlotMachine>();
       services.AddTransient<IReel, Reel>();
 
-      //services.AddTransient<IInputHandler, ConsoleInputHandler>();
-      //services.AddTransient<IOutputHandler, ConsoleOutputHandler>();
-      services.AddTransient<ISymbolGenerator, SymbolGenerator>();
+      services.AddTransient<IInputHandler, FileInputHandler>();
+      services.AddTransient<IOutputHandler, FileOutputHandler>();
+      services.AddTransient<ISymbolGenerator, MockedSymbolGenerator>();
 
       ServiceProviderHolder.ServiceProvider = services.BuildServiceProvider();
     }
     [Fact]
     public void Test1()
+    {
+      Assert.True(true);
+    }
+
+    [Fact]
+    public void Test2()
     {
       Assert.True(true);
     }
