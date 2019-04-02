@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlotMachine.Console", "SlotMachine.Console\SlotMachine.Console.csproj", "{C288BA2C-94B4-4CE8-81E4-29A6E886991A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlotMachine.Common", "SlotMachine.Common\SlotMachine.Common.csproj", "{37B2E575-6E9E-4656-98D5-FEDECB1F1952}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlotMachine.Common", "SlotMachine.Common\SlotMachine.Common.csproj", "{37B2E575-6E9E-4656-98D5-FEDECB1F1952}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{FC3B3927-A334-46B9-887E-99F242E53596}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{37B2E575-6E9E-4656-98D5-FEDECB1F1952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37B2E575-6E9E-4656-98D5-FEDECB1F1952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37B2E575-6E9E-4656-98D5-FEDECB1F1952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC3B3927-A334-46B9-887E-99F242E53596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC3B3927-A334-46B9-887E-99F242E53596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC3B3927-A334-46B9-887E-99F242E53596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC3B3927-A334-46B9-887E-99F242E53596}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
