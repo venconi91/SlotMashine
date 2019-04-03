@@ -12,6 +12,8 @@
     private const string DepositAmountInvalidText = "Please enter valid deposit amount:";
     private const string StakeRequestText = "Enter stake amount";
     private const string StakeAmountInvalidText = "Enter enter valid stake amount";
+    public const string CurrentBalanceFormatMessage = "Current balance is: {0}";
+    public const string LostSpinMessage = "You have lost this spin";
 
     public UserHandler(IPlayer player, IInputHandler inputHandler, IOutputHandler outputHandler)
     {
@@ -79,25 +81,25 @@
     {
       foreach (var row in symbols)
       {
-        outputHandler.WriteLine("");
+        outputHandler.WriteLine();
         foreach (var symbol in row)
         {
           outputHandler.Write(symbol.Sign);
         }
       }
-      outputHandler.WriteLine("");
+      outputHandler.WriteLine();
     }
 
     public void ShowWinning(decimal profit)
     {
       outputHandler.WriteLine($"You have won: {profit}");
-      outputHandler.WriteLine($"Current balance is: {currentPlayer.Balance}");
+      outputHandler.WriteLine(string.Format(CurrentBalanceFormatMessage, currentPlayer.Balance));
     }
 
     public void ShowLoss()
     {
-      outputHandler.WriteLine($"You have lost this spin");
-      outputHandler.WriteLine($"Current balance is: {currentPlayer.Balance}");
+      outputHandler.WriteLine(LostSpinMessage);
+      outputHandler.WriteLine(string.Format(CurrentBalanceFormatMessage, currentPlayer.Balance));
     }
   }
 }

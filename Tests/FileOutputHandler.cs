@@ -1,25 +1,42 @@
 ﻿namespace Tests
 {
-    using System.IO;
-    using SlotMachine.Common;
-    public class FileOutputHandler : IOutputHandler
+  using System.IO;
+  using SlotMachine.Common;
+
+  public class FileOutputHandler : IOutputHandler
+  {
+    public static readonly string OutputFilePath = "./output.txt";
+
+    public FileOutputHandler()
     {
-        private string InputFileName = "output.txt";
-        private StreamWriter streamWriter;
+      using (File.Create(OutputFilePath))
+      { }
 
-        public FileOutputHandler()
-        {
-            streamWriter = new StreamWriter($"./{InputFileName}");
-        }
-      
-        public void Write(string text)
-        {
-            streamWriter.Write(text);
-        }
-
-        public void WriteLine(string text)
-        {
-            streamWriter.WriteLine(text);
-        }
     }
+
+    public void Write(string text)
+    {
+      using (StreamWriter streamWriter = new StreamWriter(OutputFilePath, true))
+      {
+        streamWriter.Write(text);
+      }
+    }
+
+    public void WriteLine(string text)
+    {
+      using (StreamWriter streamWriter = new StreamWriter(OutputFilePath, true))
+      {
+        streamWriter.WriteLine(text);
+      }
+
+    }
+
+    public void WriteLine()
+    {
+      using (StreamWriter streamWriter = new StreamWriter(OutputFilePath, true))
+      {
+        streamWriter.WriteLine();
+      }
+    }
+  }
 }

@@ -17,7 +17,7 @@ namespace SlotMachine.Common
         case "*":
           return new WildcardSymbol(symbolSetting.Name, symbolSetting.Sign, symbolSetting.Coefficient, symbolSetting.ProbabilityForAppearingInPercentige);
         default:
-          throw new ArgumentException("symbol not supported");
+          throw new ArgumentException("Symbol not supported");
       }
     }
   }

@@ -14,5 +14,10 @@
     {
       Console.WriteLine(text);
     }
+
+    public void WriteLine()
+    {
+      Console.WriteLine();
+    }
   }
 }

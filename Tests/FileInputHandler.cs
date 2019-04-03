@@ -5,18 +5,14 @@
 
   public class FileInputHandler : IInputHandler
   {
-    private string InputFileName = "input.txt";
-    private StreamReader streamReader;
-
-    public FileInputHandler()
-    {
-      streamReader = new StreamReader($"./{InputFileName}");
-    }
+    public static readonly string InputFilePath = "./input.txt";
+    private string[] allInputLines = File.ReadAllLines(InputFilePath);
+    private int currentLine = 0;
 
     public string ReadLine()
     {
-        string line = streamReader.ReadLine();
-        System.Console.WriteLine(line);
+        string line = allInputLines[currentLine];
+        currentLine += 1;
         return line;
     }
   }

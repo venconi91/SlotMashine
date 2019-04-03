@@ -5,10 +5,13 @@ namespace Tests
   using SlotMachine.Common;
   using System.IO;
   using Xunit;
+  using System.Linq;
 
   public class FullGameIntegrationTest
   {
     public static IConfigurationRoot Configuration { get; set; }
+    
+    private const int ExpectedLostSpinsCountOfPlayer = 2;
 
     public FullGameIntegrationTest()
     {
@@ -42,15 +45,19 @@ namespace Tests
       ServiceProviderHolder.ServiceProvider = services.BuildServiceProvider();
     }
     [Fact]
-    public void Test1()
+    public void FinalBalanceOfPlayerShouldBeZero()
     {
-      Assert.True(true);
+      string[] allOutputLines = File.ReadAllLines(FileOutputHandler.OutputFilePath);
+      string lastLine = allOutputLines[allOutputLines.Length - 1];
+      Assert.Equal(string.Format(UserHandler.CurrentBalanceFormatMessage, 0.0m), lastLine); 
     }
 
     [Fact]
-    public void Test2()
+    public void PlayerLostSpinsShouldBeTwo()
     {
-      Assert.True(true);
+      string[] allOutputLines = File.ReadAllLines(FileOutputHandler.OutputFilePath);
+      int actualLostSpinsCount = allOutputLines.Count(l => l == UserHandler.LostSpinMessage);
+      Assert.Equal(ExpectedLostSpinsCountOfPlayer, actualLostSpinsCount);
     }
   }
 }
